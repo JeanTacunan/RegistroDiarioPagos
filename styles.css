@@ -23,3 +23,27 @@ body {
 h1 {
     color: #333;
 }
+
+.undo {
+    margin: 10px auto;
+    display: block;
+    background: #330000;
+    box-shadow: 0 0 10px red, 0 0 25px red;
+}
+
+.historial {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.historial ul {
+    list-style: none;
+    padding: 0;
+}
+
+.historial li {
+    padding: 8px;
+    margin: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 14px;
+}
