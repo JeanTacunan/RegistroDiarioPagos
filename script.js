@@ -12,58 +12,43 @@ function agregar(monto, tipo) {
 
     historial.push(registro);
 
-    if (tipo === 'efectivo') {
-        totalEfectivo += monto;
-        document.getElementById('totalEfectivo').innerText = totalEfectivo.toFixed(2);
-    } else {
-        totalYape += monto;
-        document.getElementById('totalYape').innerText = totalYape.toFixed(2);
-    }
+    if (tipo === 'efectivo') totalEfectivo += monto;
+    else totalYape += monto;
 
-    actualizarTotal();
-    actualizarHistorial();
-    guardarHistorial();
+    actualizarUI();
+    guardar();
 }
 
-/* DESHACER ÚLTIMA ACCIÓN */
+/* DESHACER */
 function deshacer() {
-    if (historial.length === 0) return;
+    if (!historial.length) return;
 
     const ultimo = historial.pop();
+    if (ultimo.tipo === 'efectivo') totalEfectivo -= ultimo.monto;
+    else totalYape -= ultimo.monto;
 
-    if (ultimo.tipo === 'efectivo') {
-        totalEfectivo -= ultimo.monto;
-        document.getElementById('totalEfectivo').innerText = totalEfectivo.toFixed(2);
-    } else {
-        totalYape -= ultimo.monto;
-        document.getElementById('totalYape').innerText = totalYape.toFixed(2);
-    }
-
-    actualizarTotal();
-    actualizarHistorial();
-    guardarHistorial();
+    actualizarUI();
+    guardar();
 }
 
-/* ACTUALIZAR TOTAL GENERAL */
-function actualizarTotal() {
+/* UI */
+function actualizarUI() {
+    document.getElementById('totalEfectivo').innerText = totalEfectivo.toFixed(2);
+    document.getElementById('totalYape').innerText = totalYape.toFixed(2);
     document.getElementById('totalGeneral').innerText =
         (totalEfectivo + totalYape).toFixed(2);
-}
 
-/* MOSTRAR HISTORIAL */
-function actualizarHistorial() {
     const lista = document.getElementById('listaHistorial');
     lista.innerHTML = '';
-
     historial.forEach((r, i) => {
         const li = document.createElement('li');
-        li.innerText = `${i + 1}. ${r.tipo.toUpperCase()} - S/ ${r.monto.toFixed(2)} (${r.hora})`;
+        li.textContent = `${i + 1}. ${r.tipo.toUpperCase()} - S/ ${r.monto.toFixed(2)} (${r.hora})`;
         lista.appendChild(li);
     });
 }
 
-/* GUARDAR POR DÍA */
-function guardarHistorial() {
+/* LOCAL STORAGE */
+function guardar() {
     const fecha = new Date().toLocaleDateString();
     localStorage.setItem(`historial_${fecha}`, JSON.stringify({
         historial,
@@ -72,23 +57,21 @@ function guardarHistorial() {
     }));
 }
 
-/* CARGAR AL ABRIR */
-function cargarHistorial() {
+function cargar() {
     const fecha = new Date().toLocaleDateString();
     const data = localStorage.getItem(`historial_${fecha}`);
-
     if (!data) return;
 
-    const guardado = JSON.parse(data);
-    historial = guardado.historial || [];
-    totalEfectivo = guardado.totalEfectivo || 0;
-    totalYape = guardado.totalYape || 0;
-
-    document.getElementById('totalEfectivo').innerText = totalEfectivo.toFixed(2);
-    document.getElementById('totalYape').innerText = totalYape.toFixed(2);
-
-    actualizarTotal();
-    actualizarHistorial();
+    const d = JSON.parse(data);
+    historial = d.historial || [];
+    totalEfectivo = d.totalEfectivo || 0;
+    totalYape = d.totalYape || 0;
+    actualizarUI();
 }
 
-cargarHistorial();
+/* TEMA */
+document.getElementById('toggleTheme').onclick = () => {
+    document.body.classList.toggle('light');
+};
+
+cargar();

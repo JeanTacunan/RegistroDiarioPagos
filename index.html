@@ -2,36 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro de Ingresos - Colectivo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pasajes</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark">
 
-<h1>Registro de Pasajes</h1>
+<header>
+    <h1>🚐 Registro de Pasajes</h1>
+    <button id="toggleTheme" class="neon small">🌙 / ☀️</button>
+</header>
 
-<div class="contenedor">
+<div class="contenedor camaleon">
     <h2>Efectivo</h2>
     <div class="botones">
-        <button onclick="agregar(1, 'efectivo')">S/ 1.00</button>
-        <button onclick="agregar(1.5, 'efectivo')">S/ 1.50</button>
-        <button onclick="agregar(2, 'efectivo')">S/ 2.00</button>
-        <button onclick="agregar(2.5, 'efectivo')">S/ 2.50</button>
+        <button class="neon" onclick="agregar(1,'efectivo')">S/1</button>
+        <button class="neon" onclick="agregar(1.5,'efectivo')">S/1.5</button>
+        <button class="neon" onclick="agregar(2,'efectivo')">S/2</button>
+        <button class="neon" onclick="agregar(2.5,'efectivo')">S/2.5</button>
     </div>
-    <p>Total Efectivo: <span id="totalEfectivo">0.00</span></p>
+    <p>Total: S/ <span id="totalEfectivo">0.00</span></p>
 </div>
 
-<div class="contenedor">
+<div class="contenedor camaleon">
     <h2>Yape</h2>
     <div class="botones">
-        <button onclick="agregar(1, 'yape')">S/ 1.00</button>
-        <button onclick="agregar(1.5, 'yape')">S/ 1.50</button>
-        <button onclick="agregar(2, 'yape')">S/ 2.00</button>
-        <button onclick="agregar(2.5, 'yape')">S/ 2.50</button>
+        <button class="neon yape" onclick="agregar(1,'yape')">S/1</button>
+        <button class="neon yape" onclick="agregar(1.5,'yape')">S/1.5</button>
+        <button class="neon yape" onclick="agregar(2,'yape')">S/2</button>
+        <button class="neon yape" onclick="agregar(2.5,'yape')">S/2.5</button>
     </div>
-    <p>Total Yape: <span id="totalYape">0.00</span></p>
+    <p>Total: S/ <span id="totalYape">0.00</span></p>
 </div>
 
-<h2>Total General: S/ <span id="totalGeneral">0.00</span></h2>
+<div class="total-general camaleon">
+    TOTAL GENERAL: S/ <span id="totalGeneral">0.00</span>
+</div>
+
 <button class="neon undo" onclick="deshacer()">⏪ Deshacer último</button>
 
 <div class="contenedor camaleon historial">
