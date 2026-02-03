@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Ingresos - Colectivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Registro de Pasajes</h1>
+
+<div class="contenedor">
+    <h2>Efectivo</h2>
+    <div class="botones">
+        <button onclick="agregar(1, 'efectivo')">S/ 1.00</button>
+        <button onclick="agregar(1.5, 'efectivo')">S/ 1.50</button>
+        <button onclick="agregar(2, 'efectivo')">S/ 2.00</button>
+        <button onclick="agregar(2.5, 'efectivo')">S/ 2.50</button>
+    </div>
+    <p>Total Efectivo: <span id="totalEfectivo">0.00</span></p>
+</div>
+
+<div class="contenedor">
+    <h2>Yape</h2>
+    <div class="botones">
+        <button onclick="agregar(1, 'yape')">S/ 1.00</button>
+        <button onclick="agregar(1.5, 'yape')">S/ 1.50</button>
+        <button onclick="agregar(2, 'yape')">S/ 2.00</button>
+        <button onclick="agregar(2.5, 'yape')">S/ 2.50</button>
+    </div>
+    <p>Total Yape: <span id="totalYape">0.00</span></p>
+</div>
+
+<h2>Total General: S/ <span id="totalGeneral">0.00</span></h2>
+
+<script src="script.js"></script>
+</body>
+</html>
