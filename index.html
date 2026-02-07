@@ -13,6 +13,14 @@
     <button id="toggleTheme" class="neon small">🌙 / ☀️</button>
 </header>
 
+<div class="contenedor camaleon selectorFecha">
+    <h2>📅 Seleccionar día</h2>
+
+    <input type="date" id="fechaSeleccionada">
+    <button class="neon small" onclick="cargarPorFecha()">Cargar</button>
+    <button class="neon small undo" onclick="volverHoy()">Hoy</button>
+</div>
+
 <div class="contenedor camaleon">
     <h2>Efectivo</h2>
     <div class="botones">
@@ -40,12 +48,33 @@
 </div>
 
 <button class="neon undo" onclick="deshacer()">⏪ Deshacer último</button>
+<button class="neon export" onclick="exportarTicketPDF()">🧾 Exportar Ticket (PDF)</button>
+
+<div class="contenedor camaleon resumen">
+    <h2>📊 Resumen dinámico</h2>
+
+    <div class="charts">
+        <div class="chartBox">
+            <h3>Pasajes por monto</h3>
+            <canvas id="graficoMontos"></canvas>
+        </div>
+
+        <div class="chartBox">
+            <h3>Efectivo vs Yape</h3>
+            <canvas id="graficoPagos"></canvas>
+        </div>
+    </div>
+
+    <p class="totalRegistros">Registros del día: <span id="totalRegistros">0</span></p>
+</div>
 
 <div class="contenedor camaleon historial">
     <h2>📋 Historial del día</h2>
     <ul id="listaHistorial"></ul>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -132,3 +132,121 @@ body.light .total-general {
     h1 { font-size: 18px; }
     .neon { font-size: 16px; padding: 14px; }
 }
+
+.historial li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnEliminar {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    background: #111;
+    box-shadow: 0 0 10px red, 0 0 25px red;
+    transition: 0.2s;
+}
+
+.btnEliminar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px red, 0 0 35px red;
+}
+
+.gridResumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.box {
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.4);
+    text-align: left;
+    box-shadow: 0 0 8px rgba(0, 150, 255, 0.3);
+}
+
+body.light .box {
+    background: rgba(240,240,240,0.9);
+}
+
+.box h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.totalRegistros {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+/* 📱 en celular: se pone 1 columna */
+@media (max-width: 480px) {
+    .gridResumen {
+        grid-template-columns: 1fr;
+    }
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.chartBox {
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.2);
+}
+
+body.light .chartBox {
+    background: rgba(240,240,240,0.95);
+}
+
+.chartBox h3 {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    text-align: center;
+}
+
+canvas {
+    width: 100% !important;
+    height: 220px !important;
+}
+
+/* 📱 móvil */
+@media (max-width: 480px) {
+    .charts {
+        grid-template-columns: 1fr;
+    }
+}
+
+.selectorFecha input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+body.light .selectorFecha input {
+    background: #eee;
+    color: #111;
+}
+
+.neon.export {
+    box-shadow: 0 0 10px #ffcc00, 0 0 25px #ffcc00;
+}
+.neon.export:hover {
+    box-shadow: 0 0 20px #ffcc00, 0 0 45px #ffcc00;
+}
